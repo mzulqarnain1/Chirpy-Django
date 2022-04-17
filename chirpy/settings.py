@@ -81,7 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social.middlewares.get_unseen_notification_count',
+                'social.context_processors.get_unseen_notification_count',
             ],
         },
     },

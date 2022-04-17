@@ -21,10 +21,10 @@ class ViewsTestCase(TestCase):
         )
 
     def test_get_index_page(self):
-        resource = response = self.client.get(reverse("landing-index"))
+        response = self.client.get(reverse("landing-index"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Login", response.content)
+        self.assertIn("Login", str(response.content))
 
     def test_get_feed_without_login(self):
         response = self.client.get(reverse("feed-index"))
