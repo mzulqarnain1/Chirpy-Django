@@ -1,8 +1,8 @@
-from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.test import Client, TestCase
 from django.urls import reverse
 
-from social.models import Post, Comment
+from social.models import Comment, Post
 
 
 class ViewsTestCase(TestCase):

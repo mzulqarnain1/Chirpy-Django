@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import HttpResponse, redirect, render
 from django.views import View
 
-from social.forms import PostForm, CommentForm
-from social.models import Post, Comment
+from social.forms import CommentForm, PostForm
+from social.models import Comment, Post
 
 
 class IndexView(View):

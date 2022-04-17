@@ -1,6 +1,6 @@
 from django.forms import CharField, ModelForm, Textarea
 
-from social.models import Post, Comment
+from social.models import Comment, Post
 
 
 class PostForm(ModelForm):

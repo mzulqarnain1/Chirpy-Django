@@ -1,7 +1,7 @@
-from django.test import TestCase
 from django.contrib.auth.models import User
+from django.test import TestCase
 
-from social.models import Post, Comment
+from social.models import Comment, Post
 
 
 class ModelsTestCase(TestCase):

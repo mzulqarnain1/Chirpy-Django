@@ -1,11 +1,7 @@
 from django.urls import path
-from social.views import (
-    CommentsListView,
-    IndexView,
-    PostFeedView,
-    PostDetailsView,
-    MarkReadView,
-)
+
+from social.views import (CommentsListView, IndexView, MarkReadView,
+                          PostDetailsView, PostFeedView)
 
 urlpatterns = [
     path("landing/", IndexView.as_view(), name="landing-index"),
