@@ -9,7 +9,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'Post by {self.author}'
+        return f"Post by {self.author}"
 
 
 class Comment(models.Model):

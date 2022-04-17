@@ -4,11 +4,13 @@ from django.contrib.auth.models import User
 from social.models import Post, Comment
 
 
-class PostTestCase(TestCase):
+class ModelsTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='test', password='test123')
+        self.user = User.objects.create_user(username="test", password="test123")
         self.post = Post.objects.create(body="This is a test post.", author=self.user)
-        self.comment = Comment.objects.create(body="This is a test comment.", author=self.user, post=self.post)
+        self.comment = Comment.objects.create(
+            body="This is a test comment.", author=self.user, post=self.post
+        )
 
     def test_animals_can_speak(self):
         """Animals that can speak are correctly identified"""
