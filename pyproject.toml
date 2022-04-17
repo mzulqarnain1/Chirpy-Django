@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "chirpy"
+version = "1.0"
+description = "Social media feed"
+authors = ["M. Zulqarnain <zulqarnain.mailbox@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.4"
+django-allauth = "^0.50.0"
+psycopg2-binary = "^2.9.3"
+django-crispy-forms = "^1.14.0"
+
+[tool.poetry.dev-dependencies]
+tox = "^3.25.0"
+coverage = "^6.3.2"
+pytest = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

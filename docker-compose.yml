@@ -1,0 +1,22 @@
+version: "3.5"
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash docker-entrypoint.sh
+    stdin_open: true   # Add this line into your service
+    tty: true   # Add this line into your service
+    env_file:
+      - .env
+    volumes:
+      - .:/chirpy
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

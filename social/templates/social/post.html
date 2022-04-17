@@ -1,0 +1,60 @@
+{% extends 'social/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7 col-sm-7">
+                <a href="{% url 'feed-index' %}" class="btn btn-primary">Back To Feed</a>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-10 col-sm-12 text-center">
+                <h1 class="display-5">Post Details</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-sm-10">
+                <div class="card mt-3">
+                    <div class="card-header bg-light">
+                        <p><strong>@{{ post.author }}</strong> [ {{ post.created_on}} ]</p>
+                    </div>
+                    <div class="card-body">
+                        <p> {{ post.body }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-7 col-sm-10">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="d-grid gap-3">
+                        <button type="submit" class="btn btn-primary mt-3">Add Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-10 col-sm-12 text-center">
+                <h1 class="display-7">Comments</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-sm-10">
+                {% for comment in comments %}
+                    <div class="card mt-3">
+                        <div class="card-header bg-light">
+                            <p><strong>@{{ comment.author }}</strong> Replied</p>
+                        </div>
+                        <div class="card-body">
+                            <p> {{ comment.body }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

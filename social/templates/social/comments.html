@@ -1,0 +1,46 @@
+{% extends 'social/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7 col-sm-7">
+                <a href="{% url 'feed-index' %}" class="btn btn-primary">Back To Feed</a>
+            </div>
+        </div>
+        {% if not comments %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-10 col-sm-12 text-center">
+                    <h1 class="display-7">Nothing to see here.</h1>
+                </div>
+            </div>
+        {% else %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-10 col-sm-12 text-center">
+                    <h1 class="display-7">Comments</h1>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-sm-10">
+                {% for comment in comments %}
+                    <div class="card mt-3">
+                        <div class="card-header bg-light">
+                            <p><strong>Original Post</strong></p>
+                            <q>{{ comment.post.body }}</q>
+                        </div>
+                        <div class="card-body bg-info">
+                            <p><strong>@{{ comment.author }}</strong> Replied</p>
+                            <p> {{ comment.body }}</p>
+                            {% if not comment.seen %}
+                                <a href="{% url 'read-comments' comment.id %}" class="btn btn-danger">Mark as Read</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
