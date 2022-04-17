@@ -1,16 +1,15 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 
 from social.models import Post
 
 
 class PostTestCase(TestCase):
     def setUp(self):
-        Post.objects.create(body="first_post", author=None)
-        Post.objects.create(body="second_post", author=None)
+        self.user = User.objects.create_user(username='test', password='test123')
+        Post.objects.create(body="This is a test post.", author=self.user)
 
     def test_animals_can_speak(self):
         """Animals that can speak are correctly identified"""
-        lion = Post.objects.get(name="lion")
-        cat = Post.objects.get(name="cat")
-        self.assertEqual(lion.author, None)
-        self.assertEqual(cat.speak(), 'The cat says "meow"')
+        posts = Post.objects.get(author=self.user)
+        self.assertEqual(posts.body, "This is a test post.")
