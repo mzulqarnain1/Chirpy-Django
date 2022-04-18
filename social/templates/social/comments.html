@@ -31,7 +31,7 @@
                             <p><strong>Original Post</strong></p>
                             <q>{{ comment.post.body }}</q>
                         </div>
-                        <div class="card-body bg-info">
+                        <div class="card-body {% if comment.seen %} bg-light {% else %} bg-info {% endif %}">
                             <p><strong>@{{ comment.author }}</strong> Replied</p>
                             <p> {{ comment.body }}</p>
                             {% if not comment.seen %}
